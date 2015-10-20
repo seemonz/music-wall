@@ -1,0 +1,14 @@
+body {
+  font: 100% Courier, sans-serif;
+  color: #345; }
+
+#postnew a {
+  color: white; }
+
+label {
+  color: white; }
+
+#songblock body div {
+  background-color: blue; }
+
+/*# sourceMappingURL=style.css.map */

@@ -23,3 +23,7 @@ post '/songs' do
     erb :'songs/new'
   end
 end
+
+get '/styles.css' do
+  scss :styles
+end

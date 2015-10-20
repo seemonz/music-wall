@@ -1,0 +1,26 @@
+
+
+$font-stack:    Courier, sans-serif;
+$primary-color: #333;
+$secondary-color: #345;
+
+body {
+  font: 100% $font-stack;
+  color: $secondary-color;
+}
+
+#postnew a {
+  color: white;
+}
+
+label {
+  color: white;
+}
+
+#songblock {
+  body {
+    div{
+    background-color: blue;
+    }
+  }
+}
