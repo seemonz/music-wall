@@ -3,6 +3,10 @@
 
 helpers do
 
+  def logged_in?
+    !!current_user
+  end
+
   def current_user
     if cookies[:user_id]
       User.find(cookies[:user_id])
@@ -24,7 +28,8 @@ post '/songs' do
   @song = Song.new(
     artist: params[:artist],
     track:  params[:track],
-    url: params[:url]
+    url: params[:url],
+    user_id: current_user.id
   )
   if @song.save
     redirect '/index'
@@ -64,6 +69,13 @@ post '/login' do
     @error_message = ['Invalid password Bro!']
     erb :login
   end
+end
+
+get '/logout' do
+  if logged_in?
+    cookies.delete :user_id
+  end
+  redirect to ('/index')
 end
 
 

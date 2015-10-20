@@ -1,44 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
-  <link rel="stylesheet" href="/stylesheets/normalize.css">
-  <link rel="stylesheet" href="/stylesheets/foundation.css">
-  <link rel="stylesheet" href="/stylesheets/application.css">
-  <link rel="stylesheet" href="/style.css">
+  <head>
 
-  <title>Music Wall</title>
-</head>
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/foundation.css">
+    <link rel="stylesheet" href="/stylesheets/application.css">
+    <link rel="stylesheet" href="/style.css">
 
-<body>
+    <title>Music Wall</title>
 
-  <section id="navigation">
+  </head>
 
-    <nav class="top-bar">
-      <ul class="right/left">
-        <li><a href='/index'>Home</a></li>
-        <li><a href='/users/new'>Register</a></li>
-      </ul>
-    </nav>
+  <body>
 
-  </section>
+    <%= erb :navigation %>
 
-  <section id="heading">
+    <%= erb :header %>
 
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <h2><a href='/index'>Music Wall</a></h2>
-            <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
 
-  </section>
+    <script src="/javascript/vendor/jquery.js"></script>
+    <script src="/javascript/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
 
+  </body>
 
-  <script src="/javascript/vendor/jquery.js"></script>
-  <script src="/javascript/foundation.min.js"></script>
-  <script>
-  $(document).foundation();
-  </script>
-</body>
 </html>

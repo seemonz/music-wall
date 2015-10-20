@@ -1,0 +1,16 @@
+<section id="navigation">
+
+  <nav class="top-bar">
+    <ul class="right/left">
+      <% if logged_in? %>
+      <a>Welcome, <%= current_user.user_name %></a>
+      <li><a href='/index'>Home</a></li>
+      <li><a href='/logout'>Logout</a></li>
+      <% else %>
+      <li><a href='/users/new'>Register</a></li>
+      <li><a href='/login'>Login</a></li>
+      <% end %>
+    </ul>
+  </nav>
+
+</section>
