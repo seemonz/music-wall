@@ -1,0 +1,55 @@
+<% if @user.errors.any? %>
+  <div>
+    <strong>Some issues with your user, please fix them:</strong>
+    <ul>
+      <% @user.errors.each do |user| %>
+        <li><%= user %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section id="regheading"> 
+
+  <div class="row">
+    <div class="large-8 columns">
+      <div class="callout panel">
+        <p>Register New User</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="usersform">
+
+<form method="post" action="/users">
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>User Name:</label>
+      <input type="text" name="user_name" value="<%= @user.user_name %>">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Email:</label>
+      <input type="text" name="email" value="<%= @user.email %>">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>password:</label>
+      <input type="text" name="password" value="<%= @user.password %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+    <input type="submit" value="Submit" class="small round button">      
+    </div>
+  </div>
+</form>
+
+</section>

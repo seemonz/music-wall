@@ -7,26 +7,38 @@
   <link rel="stylesheet" href="/stylesheets/application.css">
   <link rel="stylesheet" href="/style.css">
 
-
-  <title></title>
+  <title>Music Wall</title>
 </head>
+
 <body>
+
+  <section id="navigation">
+
+    <nav class="top-bar">
+      <ul class="right/left">
+        <li><a href='/index'>Home</a></li>
+        <li><a href='/users/new'>Register</a></li>
+      </ul>
+    </nav>
+
+  </section>
+
   <section id="heading">
 
-  <div class="row">
-    <div class="large-8 medium-8 columns">
-      <h2>Music Wall</h2>
-          <%= yield %>
+    <div class="row">
+      <div class="large-8 medium-8 columns">
+        <h2><a href='/index'>Music Wall</a></h2>
+            <%= yield %>
+      </div>
     </div>
-  </div>
 
-</section>
+  </section>
 
 
-<script src="/javascript/vendor/jquery.js"></script>
-<script src="/javascript/foundation.min.js"></script>
-<script>
+  <script src="/javascript/vendor/jquery.js"></script>
+  <script src="/javascript/foundation.min.js"></script>
+  <script>
   $(document).foundation();
-</script>
+  </script>
 </body>
 </html>

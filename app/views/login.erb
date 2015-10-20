@@ -1,0 +1,36 @@
+<% if @error_messages %>
+  <ul class="errors">
+    <% @error_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<section id="loginform">
+
+<form method="post" action="/login">
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>User name:</label>
+      <input type="text" name="user_name" value="user_name">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>password:</label>
+      <input type="text" name="password" value="password">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 columns">
+    <input type="submit" value="Submit" class="small round button">      
+    </div>
+  </div>
+
+</form>
+
+</section>
