@@ -2,27 +2,39 @@
   <div>
     <strong>Some issues with your song, please fix them:</strong>
     <ul>
-      <% @song.errors.full_songs.each do |song| %>
+      <% @song.errors.each do |song| %>
         <li><%= song %></li>
       <% end %>
     </ul>
   </div>
 <% end %>
 
+
 <form method="post" action="/songs">
-  <div>
-    <label>Artist:</label>
-    <input type="text" name="artist" value="<%= @song.artist %>">
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Artist:</label>
+      <input type="text" name="artist" value="<%= @song.artist %>">
+    </div>
   </div>
-  <div>
-    <label>Track:</label>
-    <input type="text" name="track" value="<%= @song.track %>">
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Track:</label>
+      <input type="text" name="track" value="<%= @song.track %>">
+    </div>
   </div>
-  <div>
-    <label>URL:</label>
-    <input type="text" name="url" value="<%= @song.url %>">
+
+  <div class="row">
+    <div class="large-8 columns">
+      <label>URL:</label>
+      <input type="text" name="url" value="<%= @song.url %>">
+    </div>
   </div>
-  <div>
+  <div class="row">
+    <div class="large-8 columns">
     <input type="submit" value="Submit">
+    </div>
   </div>
 </form>

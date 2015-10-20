@@ -1,19 +1,15 @@
 # Homepage (Root path)
-get '/' do
-  erb :'songs/index'
-end
+
 
 get '/index' do
   @songs = Song.all
   erb :'songs/index'
 end
 
-
 get '/songs/new' do
   @song = Song.new
   erb :'songs/new'
 end
-
 
 post '/songs' do
   @song = Song.new(
