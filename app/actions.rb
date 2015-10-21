@@ -17,15 +17,20 @@ helpers do
     song.upvotes.count
   end
 
-  def check_if_voted(user, song)
-   Upvote.where(["user_id = ? AND song_id = ?", "#{user}", "#{song}"]) == nil
+  def hasnt_voted(user, song)
+    Upvote.where(["user_id = ? AND song_id = ?", "#{user}", "#{song}"]).first == nil
   end
 end
 
+
 get '/index' do
-  @songs = Song.all
+  # have to use sql to select this in the right order. Couldn't find any other solution.
+  @songs = Song.find_by_sql("SELECT songs.*, COUNT(upvotes.id)
+  AS c FROM songs LEFT JOIN upvotes ON upvotes.song_id = songs.id
+  GROUP BY songs.id ORDER BY c DESC LIMIT 4")
   erb :'songs/index'
 end
+
 
 get '/songs/new' do
   if logged_in?
@@ -50,8 +55,9 @@ post '/songs' do
   end
 end
 
+
 post '/upvote/:id' do
-  if check_if_voted(current_user.id, params[:id])
+  if hasnt_voted(current_user.id, params[:id])
     @upvote = Upvote.new(
       song_id: params[:id],
       user_id: current_user.id
@@ -65,6 +71,7 @@ post '/upvote/:id' do
     redirect to '/index'
   end
 end
+
 
 get '/users/new' do
   @user = User.new
@@ -83,6 +90,7 @@ post '/users' do
     erb :'users/new'
   end
 end
+
 
 get '/login' do
   erb :login
@@ -105,6 +113,7 @@ get '/logout' do
   end
   redirect to ('/index')
 end
+
 
 
 get '/styles.css' do

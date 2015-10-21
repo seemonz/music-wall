@@ -21,9 +21,13 @@
         <p><a href="http://<%= song.url %>"><%= song.url %></a></p>
         <p>created: <%= song.created_at %></p>
         <p>votes: <%= upvote_counter(song) %>
+          <% if current_user != nil  %>
           <form method="post" action="/upvote/<%= song.id %>">
             <button type="submit" clbuttonss="small round button">Upvote!</button>
           </form>
+          <% else %>
+          
+          <% end %>
         </p>
       </div>
     </div>
