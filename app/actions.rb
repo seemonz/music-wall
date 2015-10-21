@@ -12,6 +12,14 @@ helpers do
       User.find(cookies[:user_id])
     end
   end
+
+  def upvote_counter(song)
+    song.upvotes.count
+  end
+
+  def check_if_voted(user, song)
+   Upvote.where(["user_id = ? AND song_id = ?", "#{user}", "#{song}"]) == nil
+  end
 end
 
 get '/index' do
@@ -20,8 +28,12 @@ get '/index' do
 end
 
 get '/songs/new' do
-  @song = Song.new
-  erb :'songs/new'
+  if logged_in?
+    @song = Song.new
+    erb :'songs/new'
+  else
+    redirect to ('/login')
+  end
 end
 
 post '/songs' do
@@ -35,6 +47,22 @@ post '/songs' do
     redirect '/index'
   else
     erb :'songs/new'
+  end
+end
+
+post '/upvote/:id' do
+  if check_if_voted(current_user.id, params[:id])
+    @upvote = Upvote.new(
+      song_id: params[:id],
+      user_id: current_user.id
+    )
+    if @upvote.save
+      redirect to ('/index')
+    else
+      erb :'index'
+    end
+  else
+    redirect to '/index'
   end
 end
 

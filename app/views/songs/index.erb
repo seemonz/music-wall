@@ -14,12 +14,17 @@
 
   <% @songs.each do |song| %>
   <div class="row">
-    <div class="large-12 columns">
+    <div class="large-8 columns">
       <div class="callout panel">
         <p><%= song.track %></p>
         <p><h3><a href="/songs/<%= song.id %>"></a> <small><strong>by: <%= song.artist %></strong> </p>
         <p><a href="http://<%= song.url %>"><%= song.url %></a></p>
         <p>created: <%= song.created_at %></p>
+        <p>votes: <%= upvote_counter(song) %>
+          <form method="post" action="/upvote/<%= song.id %>">
+            <button type="submit" clbuttonss="small round button">Upvote!</button>
+          </form>
+        </p>
       </div>
     </div>
   </div>

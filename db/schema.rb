@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020193920) do
+ActiveRecord::Schema.define(version: 20151021001506) do
 
   create_table "songs", force: :cascade do |t|
     t.string  "track"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20151020193920) do
     t.string  "url"
     t.date    "created_at"
     t.integer "user_id"
+    t.integer "upvotes",    default: 0
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "song_id"
+    t.integer "score",   default: 0
   end
 
   create_table "users", force: :cascade do |t|
