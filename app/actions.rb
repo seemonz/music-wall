@@ -55,6 +55,7 @@ post '/songs' do
   end
 end
 
+# TODO: refactor upvote 
 
 post '/upvote/:id' do
   if hasnt_voted(current_user.id, params[:id])
