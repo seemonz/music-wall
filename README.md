@@ -1,7 +1,9 @@
-Sinatra
+Music Wall
 =============
 
-Brought to you by Lighthouse Labs
+Add music you like!
+
+Brought to you by Robot Unicorn Attack
 
 ## Getting Started
 
